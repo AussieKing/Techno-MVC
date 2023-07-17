@@ -1,96 +1,144 @@
-# Module 14 Mini-Project: Crowdfunding App
+# Techno MVC: a Tech Blog
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-In this mini-project, you will work with a group to build a full-stack crowdfunding app using Node.js, Express.js, Sequelize, Handlebars.js, and MVC architecture.
+## Description:
+The application is a CMS-style platform whose purpose is to be a blog. It allows people who share a common interest in tech to write and read about it. Techno MVC was Technologies using the Model Controller View model, uses Express.js for authentication, Handlebars.js to render pages, and the chosen ORM is Sequelize.
 
-## User Stories
+## Table of Contents:
+- [Overview](#Overview)
+- [The task](#The-task)
+- [Information](#Information)
+- [Visuals](#Visuals)
+- [Installation](#Installation)
+- [Technologies Used](#Technologies-Used)
+- [License](#License)
+- [Author](#Author)
+- [Acknowledgments](#Acknowledgments)
 
-* As a user, I want to see a list of current projects seeking funding.
+# Overview
 
-* As a user, I want to be able to create an account.
+## The task:
 
-* As a registered user, I want to post my own projects to ask for funding.
+We were tasked to build an MVC style blog that focuses on Technology. 
+The app needed to allow for authentication (login), CRUD operations, and the ability to comment on other users' posts.
+We also had to use the MVC paradigm in our application's architectural structure, as well as use Handlebars.js as the templating language, Sequelize as the ORM, and the express-session npm package for authentication.
 
-### Acceptance Criteria
+## Assigned User Story:
+```
+AS A developer who writes about tech
+I WANT a CMS-style blog site
+SO THAT I can publish articles, blog posts, and my thoughts and opinions
+```
+## Acceptance Criteria:
+```
+GIVEN a CMS-style blog site
+WHEN I visit the site for the first time
+THEN I am presented with the homepage, which includes existing blog posts if any have been posted; navigation links for the homepage and the dashboard; and the option to log in
+WHEN I click on the homepage option
+THEN I am taken to the homepage
+WHEN I click on any other links in the navigation
+THEN I am prompted to either sign up or sign in
+WHEN I choose to sign up
+THEN I am prompted to create a username and password
+WHEN I click on the sign-up button
+THEN my user credentials are saved and I am logged into the site
+WHEN I revisit the site at a later time and choose to sign in
+THEN I am prompted to enter my username and password
+WHEN I am signed in to the site
+THEN I see navigation links for the homepage, the dashboard, and the option to log out
+WHEN I click on the homepage option in the navigation
+THEN I am taken to the homepage and presented with existing blog posts that include the post title and the date created
+WHEN I click on an existing blog post
+THEN I am presented with the post title, contents, post creator’s username, and date created for that post and have the option to leave a comment
+WHEN I enter a comment and click on the submit button while signed in
+THEN the comment is saved and the post is updated to display the comment, the comment creator’s username, and the date created
+WHEN I click on the dashboard option in the navigation
+THEN I am taken to the dashboard and presented with any blog posts I have already created and the option to add a new blog post
+WHEN I click on the button to add a new blog post
+THEN I am prompted to enter both a title and contents for my blog post
+WHEN I click on the button to create a new blog post
+THEN the title and contents of my post are saved and I am taken back to an updated dashboard with my new blog post
+WHEN I click on one of my existing posts in the dashboard
+THEN I am able to delete or update my post and taken back to an updated dashboard
+WHEN I click on the logout option in the navigation
+THEN I am signed out of the site
+WHEN I am idle on the site for more than a set time
+THEN I am able to view posts and comments but I am prompted to log in again before I can add, update, or delete posts
+```
 
-* It's done when the `/` homepage route renders a list of all projects from the database.
+## Visuals:
+### Walkthrough Video and Screenshots:
+Here you will be able to see a walkthrough video of the application and screenshots of the deployed application.
 
-* It's done when the `/project/:id` route renders an individual project's details based on the route parameter id.
+## Instructions:
+1. If you do not have an account, you will need to create one. Click on "Sign Up", enter a Username, Email and Password combination and then click "Sign Up".
+1. If you already have an account, click on "Login" and enter your Username and Password combination.
+2. Once you have an account/are logged in, you can create blog posts, comment on other people' posts and delete your own posts.
+3. How to Create a new post: head to the "dashboard" and click "Create a New Post."
+4. Fill out the content of your post (title, content) and click "Create Post" to publish the post.
+5. To comment, click on any blog post and scroll to the bottom of the page. Enter your comment and click "Add Comment".
+7. To Edit and/or delete your post, head to the "dashboard" and select the post you wish to edit or delete.
+8. You can also view all posts in "Home".
+9. To Log out, simply click on "logout" in the top menu.
 
-* It's done when the `/login` route renders a form to log in and a form to create a new account.
+## Deployed Application Link:
+[Deployed Application:]()
 
-* It's done when an existing user can enter their credentials on the login page to create a session on the server.
+## GitHub Repository:
+[GitHub Repo:]()
 
-* It's done when a new user can create an account on the login page and then be immediately logged in with a session.
+## Installation
+1. Clone the Repository from [GitHub]()
+2. Install the required dependencies using the following command:
+```npm install``` 
+3. Create a .env file in the root of the cloned repository with your MySQL credentials.
+4. Create the database using the following command:
+```mysql -u root -p```
+5. Run the following command to seed the database:
+```npm run seed```
+6. Run the following command to start the application:
+```npm start```
+7. Navigate to http://localhost:3001/ in your browser to use the application.
 
-* It's done when the `/profile` route renders the logged-in user's projects and a form to create a new project.
+## Technologies Used:
+- Node.js [Version 16.18.1](https://nodejs.org/en/blog/release/v16.18.1/)
+- Express.js:[Express.js](https://expressjs.com/en/starter/installing.html)
+- Bcrypt: [5.1.0](https://www.npmjs.com/package/bcrypt/v/5.1.0)
+- Connect Session Store using Sequelizez: [Connect Session Store using Sequelize](https://www.npmjs.com/package/connect-session-sequelize)
+- Dotenv: [8.2.0](https://www.npmjs.com/package/dotenv)
+- Express: [4.17.1](https://www.npmjs.com/package/express)
+- Express Handlebars: [5.2.0](https://www.npmjs.com/package/express-handlebars)
+- Express-Session: [1.17.1](https://www.npmjs.com/package/express-session)
+- Handlebars.js: [4.7.7](https://www.npmjs.com/package/handlebars)
+- Node MySql2: [2.2.5](https://www.npmjs.com/package/mysql2)
+- Sequelize: [6.3.5](https://www.npmjs.com/package/sequelize)
+- License Badge: [Shields.io](https://shields.io/)
 
-* It's done when only a logged in user can visit the `/profile` route.
+## License & Copyright ©
+  
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) [Open Source Initiative Link](https://opensource.org/licenses/MIT)
 
-* It's done when a logged in user is redirected to `/profile` when they try to visit `/login` again.
+### Copyright © 2023
+```md
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-* It's done when a user on the profile page can use the form to create a new project in the database.
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-* It's done when a user on the profile page can select a "Delete" button to remove their project from the database.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
 
-* It's done when a logged-in user can select a "Logout" button to remove their session.
+## Author
 
-* It's done when the session for a logged-in user expires after a set time.
-
-* It's done when the API routes to create and delete posts are protected from non logged-in users.
-
-* It's done when the code is organized using MVC architecture.
-
-* It's done when the views are rendered with Handlebars.js templates.
-
-## Specifications 
-
-* The database models have the following fields and associations:
-
-  * `User`
-
-    * `id`: primary key
-
-    * `name`
-
-    * `email`
-
-    * `password`
-
-  * `Project`
-
-    * `id`: primary key
-
-    * `name`
-
-    * `description`
-
-    * `date_created`
-
-    * `needed_funding`
-
-    * `user_id`: foreign key that references `User.id`
-
-  * Users have many projects, and projects belong to a user.
-
-    * If a user is deleted, all associated projects are also deleted.
-
----
-
-## 💡 Hints
-
-* What tools can you use to test the existing API routes if you don't yet have a front end?
-
-* Where would you place the client-side JavaScript for capturing form data?
-
-* How can middleware help protect routes from non logged-in users?
-
-* How can Handlebars.js helpers (both built-in and custom) be used to render the desired results?
-
-## 🏆 Bonus
-
-If you have completed this activity, work through the following challenge with your partner to further your knowledge:
-
-* Add an `/edit/:id` route for logged in users to update their projects' details. Then deploy the app to Heroku!
-
----
-© 2023 edX Boot Camps LLC. Confidential and Proprietary. All Rights Reserved.
+Follow me on Github at [AussieKing](). Feel free to also get in touch at fede.dordoni@gmail.com.
