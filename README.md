@@ -69,6 +69,30 @@ THEN I am able to view posts and comments but I am prompted to log in again befo
 ## Visuals:
 ### Walkthrough Video and Screenshots:
 Here you will be able to see a walkthrough video of the application and screenshots of the deployed application.
+[Walkthrough Video](https://drive.google.com/file/d/1fWnqkL1DV0i4V25793N6_kfZZu6JpXEp/view)
+
+### Homepage
+![Screen Shot 2023-07-17 at 8 15 53 pm](https://github.com/AussieKing/Techno-MVC/assets/126050763/1d8670f4-6c66-4eaf-a44d-1f0bb9d42d85)
+
+### Sign up
+![Screen Shot 2023-07-17 at 8 16 12 pm](https://github.com/AussieKing/Techno-MVC/assets/126050763/135f54ab-73e3-468e-8258-9c53d4a6ceff)
+
+### Login
+![Screen Shot 2023-07-17 at 8 16 28 pm](https://github.com/AussieKing/Techno-MVC/assets/126050763/c3ec90cd-69a7-4aee-a901-87da967516c7)
+
+### Dashboard
+![Screen Shot 2023-07-17 at 8 16 54 pm](https://github.com/AussieKing/Techno-MVC/assets/126050763/8dfff8b4-7a34-4fa5-9f8f-6571b1c6bb66)
+
+### Create new post
+![Screen Shot 2023-07-17 at 8 17 17 pm](https://github.com/AussieKing/Techno-MVC/assets/126050763/58678758-b294-46c2-ae85-96f67533befa)
+
+### Edit/Delete post options
+![Screen Shot 2023-07-17 at 8 17 27 pm](https://github.com/AussieKing/Techno-MVC/assets/126050763/9c87477a-37f1-4fbd-8736-d59eb4a33c47)
+
+### Edit post
+![Screen Shot 2023-07-17 at 8 17 39 pm](https://github.com/AussieKing/Techno-MVC/assets/126050763/ea6aab68-cc09-4fe5-a186-4f9cf13c724d)
+
+
 
 ## Instructions:
 1. If you do not have an account, you will need to create one. Click on "Sign Up", enter a Username, Email and Password combination and then click "Sign Up".
@@ -82,18 +106,18 @@ Here you will be able to see a walkthrough video of the application and screensh
 9. To Log out, simply click on "logout" in the top menu.
 
 ## Deployed Application Link:
-[Deployed Application:]()
+[Deployed Application](https://technoblog-mvc-e8059046d77a.herokuapp.com/)
 
 ## GitHub Repository:
-[GitHub Repo:]()
+[GitHub Repo](https://github.com/AussieKing/Techno-MVC)
 
 ## Installation
-1. Clone the Repository from [GitHub]()
+1. Clone the Repository from [GitHub](https://github.com/AussieKing/Techno-MVC)
 2. Install the required dependencies using the following command:
 ```npm install``` 
 3. Create a .env file in the root of the cloned repository with your MySQL credentials.
 4. Create the database using the following command:
-```mysql -u root -p```
+```mysql -u root -p``` followed by your MySQL password and ```source schema.sql```
 5. Run the following command to seed the database:
 ```npm run seed```
 6. Run the following command to start the application:
@@ -103,7 +127,7 @@ Here you will be able to see a walkthrough video of the application and screensh
 ## Technologies Used:
 - Node.js [Version 16.18.1](https://nodejs.org/en/blog/release/v16.18.1/)
 - Express.js:[Express.js](https://expressjs.com/en/starter/installing.html)
-- Bcrypt: [5.1.0](https://www.npmjs.com/package/bcrypt/v/5.1.0)
+- Bcrypt: [4.0.1](https://www.npmjs.com)
 - Connect Session Store using Sequelizez: [Connect Session Store using Sequelize](https://www.npmjs.com/package/connect-session-sequelize)
 - Dotenv: [8.2.0](https://www.npmjs.com/package/dotenv)
 - Express: [4.17.1](https://www.npmjs.com/package/express)
@@ -141,4 +165,4 @@ SOFTWARE.
 
 ## Author
 
-Follow me on Github at [AussieKing](). Feel free to also get in touch at fede.dordoni@gmail.com.
+Follow me on Github at [AussieKing](https://github.com/AussieKing). Feel free to also get in touch at fede.dordoni@gmail.com.
