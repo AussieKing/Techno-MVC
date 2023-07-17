@@ -1,11 +1,14 @@
+//! This helper function will be used to format the date
+
 module.exports = {
   format_date: (date) => {
-    // Format date as MM/DD/YYYY
-    const day = new Date(date);
-    const hrs = day.getHours().toString().padStart(2, '0');
-    const mins = day.getMinutes().toString().padStart(2, '0');
-    const formDate = `${day.getMonth() + 1}/${day.getDate()}/${day.getFullYear()} ${hrs}:${mins}`;
-    const formTime = `${hrs}:${mins}`;
-    return `${formDate} (${formTime})`;
-  }
+
+    const d = new Date(date);
+    const formattedDate = `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`;
+    const hours = d.getHours().toString().padStart(2, '0');
+    const minutes = d.getMinutes().toString().padStart(2, '0');
+    const formattedTime = `${hours}:${minutes}`;
+    
+    return `${formattedDate} at ${formattedTime}`;
+  },
 };

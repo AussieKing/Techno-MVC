@@ -1,13 +1,15 @@
+// Declaring all the dependencies, includding bcrypt for password hashing
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt'); // taking out due to macOS incompatibility
 const sequelize = require('../config/connection');
+const bcrypt = require('bcrypt');
 
-class User extends Model {
-  checkPassword(loginPw) {
-    return bcrypt.compareSync(loginPw, this.password);
+class User extends Model {  // creating the User model by extending the sequelize Model class
+  checkPassword(loginPw) {  // checking the password by using the bcrypt method
+    return bcrypt.compareSync(loginPw, this.password);  // comparing the password with the hashed password
   }
 }
 
+// Defining the table columns and configuration, with all the fields
 User.init(
   {
     id: {
@@ -19,6 +21,7 @@ User.init(
     username: {
       type: DataTypes.STRING,
       allowNull: false,
+      unique: true,
     },
     email: {
       type: DataTypes.STRING,
@@ -32,19 +35,20 @@ User.init(
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [12, 64],
+        len: [6],  // the password must be at least 6 characters long 
       },
     },
   },
-  {
+
+  {  // Using the beforeCreate and beforeUpdate hooks to hash the password before the data is created or updated
     hooks: {
-      beforeCreate: async (newUserData) => {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
-        return newUserData;
+      async beforeCreate(newUser) {
+        newUser.password = await bcrypt.hash(newUser.password, 10);  // hashing the password with the bcrypt method and the salt
+        return newUser;
       },
-      beforeUpdate: async (updatedUserData) => {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-        return updatedUserData;
+      async beforeUpdate(updatedUser) {
+        updatedUser.password = await bcrypt.hash(updatedUser.password, 10);  // 10 is the salt
+        return updatedUser;
       },
     },
     sequelize,

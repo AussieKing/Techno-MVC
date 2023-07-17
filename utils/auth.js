@@ -1,11 +1,12 @@
 //! CHECKS IF USER IS LOGGED IN
-const withAuth = (req, res, next) => {
-  // If the user is not logged in, redirect the request to the login route
+
+const withAuth = (req, res, next) => {  // middleware function if te user is logged in, continue with the request to the restricted route
   if (!req.session.logged_in) {
-    res.redirect('/login');
-  } else {
-    next(); // If the user is logged in, execute the route function that will allow them to view the page
+    res.redirect("/login");  // and if the user is not logged in, redirect the user to the login page
+  } else {  // otherwise, continue with the request to the restricted route
+    next();
   }
 };
 
 module.exports = withAuth;
+

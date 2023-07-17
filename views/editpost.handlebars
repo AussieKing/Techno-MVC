@@ -1,0 +1,16 @@
+<main class="container mt-5">
+  <h1 class="mb-4">Edit Post</h1>
+  <form class="update-Blog-post-form" class="mb-3">
+    <div class="mb-3">
+      <label for="title-update-Blog-post" class="form-label">Title</label>
+      <input type="text" class="form-control" id="title-update-Blog-post" placeholder="Enter the title of your post" value="{{title}}" />
+    </div>
+    <div class="mb-3">
+      <label for="content-update-Blog-post" class="form-label">Content</label>
+      <textarea class="form-control" id="content-update-Blog-post" rows="3" placeholder="Enter your post here"
+      >{{content}}</textarea>  <!-- the content of the post will be displayed in the textarea -->
+    </div>
+    <button type="submit" id="update-Blog-post" class="btn btn-primary">Update Post</button>
+    <button type="button" id="delete-Blog-post" class="btn btn-danger">Delete Post</button>
+  </form>
+</main>

@@ -1,14 +1,24 @@
-<div class="text-center">
-  <h2>{{name}}</h2>
-  <p>{{{get_emoji}}}</p>
-  <p>{{description}}</p>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
-  <p>
-    <span for="img" aria-label="money">💲</span>
-    <span class="dollar-amount">{{format_amount needed_funding}}</span>
-    needed
-  </p>
-  <p>
-    <button class="btn btn-primary">Fund this Project!</button>
-  </p>
-</div>
+<main class="container mt-5">
+  <article>
+    <h1>{{title}}</h1>
+    <p>Created by: {{user.username}} | Date: {{format_date createdAt}}</p>
+    <p>{{content}}</p>
+  </article>
+  {{#if logged_in}}  <!-- if the user is logged in, they will be able to add a comment -->
+    <form class="new-Blog-comment-form" class="mb-3">
+      <div class="mb-3">
+        <label for="comment" class="form-label">Add Comment:</label>
+        <textarea class="form-control" id="content-new-Blog-comment" rows="3" placeholder="Leave a comment."
+        ></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  {{/if}}
+  <h2>Previous comments:</h2>  <!-- all comments will be displayed here -->
+  {{#each comments}}
+    <div class="comment mb-3">
+      <p>{{comment_text}}</p>
+      <p>By {{user.username}} on {{format_date createdAt}}</p>
+    </div>
+  {{/each}}
+</main>

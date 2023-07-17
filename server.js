@@ -1,50 +1,54 @@
-const path = require('path');
-const express = require('express');
-const session = require('express-session');
-const exphbs = require('express-handlebars');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
+//! SERVER.JS IS THE ENTRY POINT FOR THE APPLICATION
+// Requiring necessary npm packages and files
+const express = require("express");
+const session = require("express-session");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const routes = require("./controllers");
+const sequelize = require("./config/connection");
+const exphbs = require("express-handlebars");
+const hbs = exphbs.create({ helpers: require("./utils/helpers") });
 
-const routes = require('./controllers');
-const helpers = require('./utils/helpers');
-const sequelize = require('./config/connection');
-
-require('dotenv').config();
-
+// Declaring the app variable and setting up port 3001 for server
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Set up Handlebars.js engine with custom helpers
-const hbs = exphbs.create({ helpers });
-
+// Session is a middleware that allows us to store session data on the client side using cookies
 const sess = {
-  secret: 'ABCDEFG',
-  cookie: {
-    maxAge: 300000, // 5 minutes
-    httpOnly: true, // means that the cookie is not accessible via JavaScript
-    secure: false, // means that the cookie will only be used over HTTPS (not HTTP)
-    sameSite: 'lax', // meaning that the cookie can only be accessed on pages that were loaded from the same domain
-  },
-  resave: false, // forces the session to be saved back to the session store, even if the session was never modified during the request
-  saveUninitialized: true, // forces a session that is "uninitialized" to be saved to the store
-  store: new SequelizeStore({
-    db: sequelize
-  }) // tells the session to store the session data in our Sequelize database
+  secret: 'Secret session key',
+  cookie: {}, // {} means that the cookie will expire at the end of the session (when the browser is closed) 
+  resave: false,  // Forces the session to be saved back to the session store, even if the session was never modified during the request
+  saveUninitialized: true,  // Forces a session that is "uninitialized" to be saved to the store
+  store: new SequelizeStore({  // Store is where the session data is held
+    db: sequelize,  
+  }),
 };
 
-// tells our application to use the session package
+// Tells the app to use the session middleware
 app.use(session(sess));
 
-// Inform Express.js on which template engine to use
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
-
+// Setting up middleware for parsing JSON and urlencoded form data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
 
+// Setting up middleware for static assets and handlebars engine
+app.use(express.static("public"));
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
+
+// Setting up middleware for routes
+app.use(
+  session({
+    secret: process.env.SECRET,  // Secret is used to sign the session ID cookie
+    store: new SequelizeStore({ db: sequelize }),  // Store is where the session data is held
+    resave: false,  // Forces the session to be saved back to the session store, even if the session was never modified during the request
+    saveUninitialized: false,  // Forces a session that is "uninitialized" to be saved to the store
+  })
+);
+
+// tells the app to use the routes
 app.use(routes);
 
-// turn on connection to db and server
+// and finally, we sync our sequelize models to the database, then turn on the server (IMPORTANT!)
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, () => console.log(`Listening on PORT ${PORT}`));
 });

@@ -1,53 +1,31 @@
-const loginFormHandler = async (event) => {
+//! PUBLIC JS FILE FOR SIGNING UP
+// This file is used to sign up a user
+
+const BlogLoginFormHandler = async (event) => {  // This function will handle the login event
   event.preventDefault();
 
-  // Collect values from the login form
-  const email = document.querySelector('#email-login').value.trim();
-  const password = document.querySelector('#password-login').value.trim();
+  const username = document.querySelector('#username-Blog-login').value.trim();  // getting the username and password from the form and trimming the whitespace
+  const password = document.querySelector('#password-Blog-login').value.trim();
 
-  if (email && password) {
-    // Send a POST request to the API endpoint
-    const response = await fetch('/api/users/login', {
-      method: 'POST',
-      body: JSON.stringify({ email, password }),
-      headers: { 'Content-Type': 'application/json' },
+  if (username && password) {  // if the username and password are not empty
+
+    const response = await fetch('/api/users/login', { // fetch a request to the server
+      method: 'POST',  // by using the POST method
+      body: JSON.stringify({ username, password }),  // and transforming the data into a JSON string
+      headers: { 'Content-Type': 'application/json' },  // with the application/json header
     });
 
     if (response.ok) {
-      // If successful, redirect the browser to the profile page
-      document.location.replace('/profile');
+      document.location.replace('/'); // once the user is logged in, redirect to the homepage
     } else {
-      alert(response.statusText);
+            
+      alert("Couldn't login."); 
     }
   }
 };
 
-const signupFormHandler = async (event) => {
-  event.preventDefault();
-
-  const name = document.querySelector('#name-signup').value.trim();
-  const email = document.querySelector('#email-signup').value.trim();
-  const password = document.querySelector('#password-signup').value.trim();
-
-  if (name && email && password) {
-    const response = await fetch('/api/users', {
-      method: 'POST',
-      body: JSON.stringify({ name, email, password }),
-      headers: { 'Content-Type': 'application/json' },
-    });
-
-    if (response.ok) {
-      document.location.replace('/profile');
-    } else {
-      alert(response.statusText);
-    }
-  }
-};
-
-document
-  .querySelector('.login-form')
-  .addEventListener('submit', loginFormHandler);
-
-document
-  .querySelector('.signup-form')
-  .addEventListener('submit', signupFormHandler);
+//! EVENT LISTENER
+const BlogLoginForm = document.querySelector('.Blog-login-form');  // addEventListener will listen for the submit event on the form
+if (BlogLoginForm) {  // if the form exists
+  BlogLoginForm.addEventListener('submit', BlogLoginFormHandler);  // on submit event, call the BlogLoginFormHandler function
+}
